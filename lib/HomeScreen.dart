@@ -129,6 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     subtitle: const Text('User message'),
                   );
                 }),
+            //status section code
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border: Border.all(
-                                  width: 3,
+                                  width: index % 3 == 0 ? 0 : 3,
                                   color: Colors.green,
                                 )),
                             child: CircleAvatar(
