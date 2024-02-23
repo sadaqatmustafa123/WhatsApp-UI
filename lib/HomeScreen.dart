@@ -65,12 +65,12 @@ class _HomeScreenState extends State<HomeScreen> {
             ListView.builder(
                 itemCount: 50,
                 itemBuilder: (context, index) {
-                  return const ListTile(
-                    leading: CircleAvatar(
+                  return ListTile(
+                    leading: const CircleAvatar(
                       backgroundImage: NetworkImage(
                           'https://images.pexels.com/photos/3760737/pexels-photo-3760737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
                     ),
-                    trailing: Column(
+                    trailing: const Column(
                       children: [
                         Text('05:35'),
                         SizedBox(
@@ -79,11 +79,41 @@ class _HomeScreenState extends State<HomeScreen> {
                         Icon(Icons.done_all),
                       ],
                     ),
-                    title: Text('User'),
-                    subtitle: Text('User message'),
+                    title: index % 3 == 0
+                        ? const Text('User 1')
+                        : const Text('User 2'),
+                    subtitle: const Text('User message'),
                   );
                 }),
-            const Text('3'),
+            ListView.builder(
+                itemCount: 50,
+                itemBuilder: (context, int index) {
+                  return ListTile(
+                    leading: Container(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            width: 3,
+                            color: Colors.green,
+                          )),
+                      child: const CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            'https://images.pexels.com/photos/3760737/pexels-photo-3760737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                      ),
+                    ),
+                    title: index % 3 == 0
+                        ? const Text('User 1')
+                        : const Text('User 2'),
+                    subtitle: Row(children: [
+                      index % 2 == 0
+                          ? const Text(
+                              'View Status',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            )
+                          : const Text('Status Viewd'),
+                    ]),
+                  );
+                }),
             ListView.builder(
                 itemCount: 50,
                 itemBuilder: (context, int index) {
