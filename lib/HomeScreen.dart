@@ -61,14 +61,58 @@ class _HomeScreenState extends State<HomeScreen> {
             ]),
           ),
           body: TabBarView(children: [
-            const Text('1'),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Text(
+                    'Communities',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                      itemCount: 50,
+                      itemBuilder: (context, int index) {
+                        return ListTile(
+                          leading: CircleAvatar(
+                            backgroundImage: index % 3 == 0
+                                ? const NetworkImage(
+                                    'https://images.pexels.com/photos/3760737/pexels-photo-3760737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
+                                : const NetworkImage(
+                                    'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                          ),
+                          trailing: const Column(
+                            children: [
+                              Text('05:35'),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Icon(Icons.done_all),
+                            ],
+                          ),
+                          title: index % 3 == 0
+                              ? const Text('Community 1')
+                              : const Text('Community 2'),
+                          subtitle: const Text('Update from community'),
+                        );
+                      }),
+                ),
+              ],
+            ),
+            //chats section code
             ListView.builder(
                 itemCount: 50,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    leading: const CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          'https://images.pexels.com/photos/3760737/pexels-photo-3760737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                    leading: CircleAvatar(
+                      backgroundImage: index % 3 == 0
+                          ? const NetworkImage(
+                              'https://images.pexels.com/photos/3760737/pexels-photo-3760737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
+                          : const NetworkImage(
+                              'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
                     ),
                     trailing: const Column(
                       children: [
@@ -85,42 +129,64 @@ class _HomeScreenState extends State<HomeScreen> {
                     subtitle: const Text('User message'),
                   );
                 }),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Text(
+                    'Recent Updates',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                      itemCount: 50,
+                      itemBuilder: (context, int index) {
+                        return ListTile(
+                          leading: Container(
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  width: 3,
+                                  color: Colors.green,
+                                )),
+                            child: CircleAvatar(
+                              backgroundImage: index % 3 == 0
+                                  ? const NetworkImage(
+                                      'https://images.pexels.com/photos/3760737/pexels-photo-3760737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
+                                  : const NetworkImage(
+                                      'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                            ),
+                          ),
+                          title: index % 3 == 0
+                              ? const Text('User 1')
+                              : const Text('User 2'),
+                          subtitle: Row(children: [
+                            index % 2 == 0
+                                ? const Text(
+                                    'View Status',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  )
+                                : const Text('Status Viewd'),
+                          ]),
+                        );
+                      }),
+                ),
+              ],
+            ),
             ListView.builder(
                 itemCount: 50,
                 itemBuilder: (context, int index) {
                   return ListTile(
-                    leading: Container(
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            width: 3,
-                            color: Colors.green,
-                          )),
-                      child: const CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            'https://images.pexels.com/photos/3760737/pexels-photo-3760737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                      ),
-                    ),
-                    title: index % 3 == 0
-                        ? const Text('User 1')
-                        : const Text('User 2'),
-                    subtitle: Row(children: [
-                      index % 2 == 0
-                          ? const Text(
-                              'View Status',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )
-                          : const Text('Status Viewd'),
-                    ]),
-                  );
-                }),
-            ListView.builder(
-                itemCount: 50,
-                itemBuilder: (context, int index) {
-                  return ListTile(
-                    leading: const CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          'https://images.pexels.com/photos/3760737/pexels-photo-3760737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                    leading: CircleAvatar(
+                      backgroundImage: index % 3 == 0
+                          ? const NetworkImage(
+                              'https://images.pexels.com/photos/3760737/pexels-photo-3760737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
+                          : const NetworkImage(
+                              'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
                     ),
                     trailing: Icon(
                       index % 2 == 0 ? Icons.phone : Icons.video_call,
