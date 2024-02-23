@@ -86,18 +86,18 @@ class _HomeScreenState extends State<HomeScreen> {
             const Text('3'),
             ListView.builder(
                 itemCount: 50,
-                itemBuilder: (context, index) {
-                  return const ListTile(
-                    leading: CircleAvatar(
+                itemBuilder: (context, int index) {
+                  return ListTile(
+                    leading: const CircleAvatar(
                       backgroundImage: NetworkImage(
                           'https://images.pexels.com/photos/3760737/pexels-photo-3760737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
                     ),
                     trailing: Icon(
-                      Icons.phone,
-                      color: Color.fromARGB(255, 23, 142, 27),
+                      index % 2 == 0 ? Icons.phone : Icons.video_call,
+                      color: const Color.fromARGB(255, 23, 142, 27),
                     ),
-                    title: Text('User (3)'),
-                    subtitle: Row(children: [
+                    title: const Text('User (3)'),
+                    subtitle: const Row(children: [
                       Icon(
                         Icons.south_west,
                         size: 15,
